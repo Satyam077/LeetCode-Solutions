@@ -1,0 +1,40 @@
+class Solution {
+    public boolean detectCapitalUse(String word) {
+            char[] letters = word.toCharArray();
+    if (isLower(letters[0])) {
+      // all must be lower
+      for (int i = 1; i < letters.length; i++) {
+        if (!isLower(letters[i])) {
+          return false;
+        }
+      }
+      return true;
+    }
+    if (letters.length == 1) {
+      return true;
+    }
+    if (isLower(letters[1])) {
+      // the rest must be lower
+      for (int i = 2; i < letters.length; i++) {
+        if (!isLower(letters[i])) {
+          return false;
+        }
+      }
+      return true;
+    } else {
+      // the rest must be upper
+      for (int i = 2; i < letters.length; i++) {
+        if (isLower(letters[i])) {
+          return false;
+        }
+      }
+      return true;
+    }
+  }
+
+  private boolean isLower(char c) {
+    return c >= 'a' && c <= 'z';
+  
+        
+    }
+}
